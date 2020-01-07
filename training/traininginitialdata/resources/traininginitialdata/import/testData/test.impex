@@ -1,0 +1,88 @@
+$contentCatalog=electronicsContentCatalog
+$contentCV=catalogVersion(CatalogVersion.catalog(Catalog.id[default=$contentCatalog]),CatalogVersion.version[default=Staged])[default=$contentCatalog:Staged]
+$lang=en
+$siteResource=jar:de.hybris.training.initialdata.constants.TrainingInitialDataConstants&/traininginitialdata/import
+ 
+UPDATE ProductCarouselComponent;$contentCV[unique=true];uid[unique=true];title[lang=$lang] 
+                               ;;NewElectronicsHomepageProductCarouselComponent;Could Be Something Brand New
+
+ 
+
+INSERT_UPDATE ContentPage;$contentCV[unique=true];uid[unique=true];name;masterTemplate(uid,$contentCV);label;approvalStatus(code)[default='approved'] 
+                         ;;testPage;Page For testing;ContentPage1Template;/test 
+
+ 
+
+
+# CMS Link Components 
+INSERT_UPDATE CMSLinkComponent;$contentCV[unique=true];uid[unique=true];name;linkName[lang=$lang];url;&linkRef;target(code)[default='sameWindow'] 
+                              ;;MyTestPageLink;MyTestPageLink;"Test Page";/test;MyTestPageLink; 
+ 
+# CMS Navigation Nodes (children of my account) 
+INSERT_UPDATE CMSNavigationNode;uid[unique=true];$contentCV[unique=true];name;parent(uid, $contentCV);&nodeRef 
+                               ;MyTestPageNavNode;;MyTestPageNavNode;MyAccountNavNode;MyTestPageNavNode 
+ 
+# create cms navigation entry for navigation child nodes 
+INSERT_UPDATE CMSNavigationEntry;uid[unique=true];$contentCV[unique=true];name;navigationNode(&nodeRef);item(&linkRef); 
+                                ;MyTestPageNavNodeEntry;;MyTestPageNavNodeEntry;MyTestPageNavNode;MyTestPageLink; 
+								
+###Media1
+
+#Create media 
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'] 
+;;testMedia;testMedia.jpg;$siteResource/testData/medias/testMedia.jpg 
+ 
+#Create component with previously created media 
+INSERT_UPDATE SimpleBannerComponent;$contentCV[unique=true];uid[unique=true];name;urlLink;media($contentCV, code);&componentRef 
+;;TestBannerComponent;Test Component;https://example.com/;testMedia;TestBannerComponent 
+ 
+#Create Content Slot with previously created Component 
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef) 
+;;Section2ASlot-test;Section 2A Slot for Test Page;true;TestBannerComponent 
+ 
+# Add content slot to Position on Page 
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='testPage'];contentSlot(uid,$contentCV)[unique=true] 
+;;Section2A-test;Section2A;;Section2ASlot-test 
+
+###Media2
+
+#Create media and pdf media  
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'] 
+                   ;;testMedia2;testMedia2.jpg;$siteResource/testData/medias/testMedia2.jpg 
+                   ;;samplePdf;sample.pdf;$siteResource/testData/medias/sample.pdf 
+ 
+#Create component with previously created medias  
+INSERT_UPDATE SimplePDFComponent;$contentCV[unique=true];uid[unique=true];name;media($contentCV, code);pdf($contentCV, code);&componentRef 
+                                ;;TestPDFComponent;Test PDF Component;testMedia2;samplePdf;TestPDFComponent 
+ 
+#Create Content Slot with previously created Component  
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef) 
+                         ;;Section2BSlot-test;Section 2B Slot for Test Page;true;TestPDFComponent 
+ 
+# Add content slot to Position on Page  
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='testPage'];contentSlot(uid,$contentCV)[unique=true] 
+                                ;;Section2B-test;Section2B;;Section2BSlot-test 
+								
+###Media3
+
+#Create media 
+
+#Create media and pdf media  
+INSERT_UPDATE Media;$contentCV[unique=true];code[unique=true];realfilename;@media[translator=de.hybris.platform.impex.jalo.media.MediaDataTranslator];mime[default='image/jpeg'];folder(qualifier)[default='images'] 
+                   ;;testMedia2;testMedia2.jpg;$siteResource/testData/medias/testMedia2.jpg 
+                   ;;samplePdf;sample.pdf;$siteResource/testData/medias/sample.pdf 
+ 
+#Create component with previously created medias  
+INSERT_UPDATE SimplePDFComponent;$contentCV[unique=true];uid[unique=true];name;media($contentCV, code);pdf($contentCV, code);&componentRef 
+                                ;;TestPDFComponent;Test PDF Component;testMedia2;samplePdf;TestPDFComponent 
+ 
+#Create Content Slot with previously created Component  
+INSERT_UPDATE ContentSlot;$contentCV[unique=true];uid[unique=true];name;active;cmsComponents(&componentRef) 
+                         ;;Section2BSlot-test;Section 2B Slot for Test Page;true;TestPDFComponent 
+ 
+# Add content slot to Position on Page  
+INSERT_UPDATE ContentSlotForPage;$contentCV[unique=true];uid[unique=true];position[unique=true];page(uid,$contentCV)[unique=true][default='testPage'];contentSlot(uid,$contentCV)[unique=true] 
+                                ;;Section2B-test;Section2B;;Section2BSlot-test 
+
+
+###
