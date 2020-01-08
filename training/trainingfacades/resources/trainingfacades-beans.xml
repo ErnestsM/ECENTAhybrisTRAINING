@@ -41,7 +41,7 @@
 		<property name= "email" type="String"/>
 		<property name= "pwd" type="String"/>
 		<property name= "checkPwd" type="String"/>
-		<!-- private ConsentForm consentForm;   DONT NEED THIS BECAUSE I CREATED MY OWN ConsentForm -->
+		<!-- private ConsentForm consentForm;   DONT NEED THIS BECAUSE I CREATED MY OWN ConsentForm --> <!-- Why then this line not removed?)) -->
 		<property name="termsCheck" type="Boolean"/>
 		<property name= "phoneNumber" type="String"/>
 

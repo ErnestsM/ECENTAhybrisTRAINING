@@ -28,7 +28,7 @@ import javax.servlet.http.HttpServletRequest;
 public class SimplePDFComponentController extends AbstractAcceleratorCMSComponentController<SimplePDFComponentModel>
 {
 
-
+// ctlr alt l + ctrl alt o
 	@Resource(name = "customerFacade")
 	private CustomerFacade customerFacade;
 

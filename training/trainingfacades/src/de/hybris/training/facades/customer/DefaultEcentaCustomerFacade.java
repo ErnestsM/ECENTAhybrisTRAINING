@@ -29,6 +29,7 @@ public class DefaultEcentaCustomerFacade extends DefaultCustomerFacade implement
     @Override
     public void updateProfile(final CustomerData customerData) throws DuplicateUidException
     {
+        //This format is not recommended auto format won't change it, but un future try not to use a lot of spaces between lines.
         validateDataBeforeUpdate(customerData);
 
         final String name = getCustomerNameStrategy().getName(customerData.getFirstName(), customerData.getLastName());
@@ -41,7 +42,7 @@ public class DefaultEcentaCustomerFacade extends DefaultCustomerFacade implement
 
         getEcentaCustomerAccountService().updateProfile(customer, customerData.getTitleCode(), name, customerData.getUid(), phoneNumber);
 
-
+        //Us auto-format to remove this (alt ctrl l)
 
     }
 

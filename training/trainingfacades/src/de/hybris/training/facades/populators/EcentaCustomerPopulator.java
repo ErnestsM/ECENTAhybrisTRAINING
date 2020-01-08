@@ -4,6 +4,9 @@ import de.hybris.platform.commercefacades.user.converters.populator.CustomerPopu
 import de.hybris.platform.commercefacades.user.data.CustomerData;
 import de.hybris.platform.core.model.user.CustomerModel;
 
+//Bad format
+//Use CTRL+ALT+L to format code (IDEA). Also a lot of other useful hotkeys could be found in Code tab (e.g. CTLR+ALT+O, ...)
+
 public class EcentaCustomerPopulator extends CustomerPopulator {
 
                         @Override

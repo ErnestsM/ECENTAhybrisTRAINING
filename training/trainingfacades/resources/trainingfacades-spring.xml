@@ -187,12 +187,14 @@
 
 	</bean>
 
+	<!-- Remove if not used -->
 	<!-- <alias name="defaultEcentaCustomerFacade" alias="customerFacade"/> -->
 
 	<bean id="defaultEcentaCustomerFacade" class="de.hybris.training.facades.customer.DefaultEcentaCustomerFacade" parent="defaultCustomerFacade">
 		<property name="ecentaCustomerAccountService" ref="defaultEcentaCustomerAccountService"/>
 	</bean>
 
+	<!-- This service is from trainingcore extension. So move it to 'trainingcore-spring.xml' -->
 	<bean id="defaultEcentaCustomerAccountService" class="de.hybris.training.core.customer.DefaultEcentaCustomerAccountService" parent="defaultCustomerAccountService">
 	</bean>
 

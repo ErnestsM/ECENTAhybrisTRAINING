@@ -13,8 +13,8 @@ import static de.hybris.platform.servicelayer.util.ServicesUtil.validateParamete
 
 public class DefaultEcentaCustomerAccountService extends DefaultCustomerAccountService implements EcentaCustomerAccountService {
 
-
-
+//Too much space here))
+//Use CTRL+ALT+L to format code (IDEA). Also a lot of other useful hotkeys could be found in Code tab (e.g. CTLR+ALT+O, ...)
 
     public void updateProfile(final CustomerModel customerModel, final String titleCode, final String name, final String login, final String phoneNumber)
             throws DuplicateUidException

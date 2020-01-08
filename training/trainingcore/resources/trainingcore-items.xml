@@ -118,6 +118,9 @@
 					
 			</itemtype>
 
+            <!-- If you still have questions about Customer vs User you can ask) But write them down in Teams or txtfile.
+            So from code you can remove it)) -->
+
             <!-- added for the second task  --> <!-- Customer or User? -->
 <!--
                 itemtype code="Customer"
